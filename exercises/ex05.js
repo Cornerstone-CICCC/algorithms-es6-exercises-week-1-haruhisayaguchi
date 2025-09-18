@@ -26,3 +26,41 @@ var shirtSleeve = 8.47; // size M (medium)
 Then print N/A to the console because the measurements don't all match up with one particular size.
 
 */
+const shirtWidth = 23;
+const shirtLength = 30;
+const shirtSleeve = 8.71;
+
+const sizeRanges = [
+	{ size: 'S', w: 18, l: 28, s: 8.13 },
+	{ size: 'M', w: 20, l: 29, s: 8.38 },
+	{ size: 'L', w: 22, l: 30, s: 8.63 },
+	{ size: 'XL', w: 24, l: 31, s: 8.88 },
+	{ size: '2XL', w: 26, l: 33, s: 9.63 },
+	{ size: '3XL', w: 28, l: 34, s: 10.13 }
+]
+let sizeResult = 'N/A';
+
+for (let i = 0; i < sizeRanges.length; i++) {
+	const current = sizeRanges[i]
+	const next = sizeRanges[i + 1]
+	if (!next) {
+		if (
+			current.w <= shirtWidth &&
+			current.l <= shirtLength &&
+			current.s <= shirtSleeve
+		) {
+			sizeResult = current.size
+		}
+	} else {
+		if (
+			(current.w <= shirtWidth && shirtWidth < next.w) &&
+			(current.l <= shirtLength && shirtLength < next.l) &&
+			(current.s <= shirtSleeve && shirtSleeve < next.s)
+		) {
+			sizeResult = current.size
+			break
+		}
+	}
+}
+
+console.log(sizeResult)
