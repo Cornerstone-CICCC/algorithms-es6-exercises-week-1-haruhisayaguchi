@@ -8,3 +8,6 @@ while (x >= 1) {
 }
 
 */
+for (let i = 9; 1 <= i; i--) {
+  console.log("hello " + i);
+}
